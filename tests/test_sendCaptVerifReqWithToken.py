@@ -67,7 +67,7 @@ def test_getCaptVerifCSV(getToken):
   except requests.exceptions.RequestException as err:
     print("OOps: Something Else", err)
 
-  assert s.status_code==200, 'session not created'
+  assert s.status_code==200, 'session request response not 200 OK'
   # access session cookies
   #print(f'session cookies: {s.cookies}')
 
