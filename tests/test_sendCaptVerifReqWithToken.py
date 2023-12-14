@@ -3,6 +3,7 @@ import http.client
 import json
 import logging
 import os
+import pandas as pd
 
 import requests
 from requests.adapters import HTTPAdapter
@@ -17,6 +18,8 @@ def test_getCaptVerifCSV(getToken):
   url = 'wfo.a31.verintcloudservices.com'
   url_api = '/api/av/capture_verification/v1/call_segments/issues/search/csv'
   s='null'  # requests session variable
+  # create an Empty DataFrame object, holds capt verif results
+  df = pd.DataFrame()
 
   LOGGER.debug('test_getCaptVerifCSV:: started')
   token = 'null'
@@ -85,4 +88,6 @@ def test_getCaptVerifCSV(getToken):
   zipPath = '.\output\CaptVerif' + '\CaptVerifCSV_session' + '.zip'
   with open(zipPath, 'wb') as zipFile:
       zipFile.write(s.content)
+
+  # need to unzip Capt Verif csv and import to DF
 
