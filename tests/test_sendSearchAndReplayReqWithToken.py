@@ -15,27 +15,26 @@ from urllib3.util.retry import Retry
 logging.basicConfig(level=logging.DEBUG)
 LOGGER = logging.getLogger(__name__)
 
-def test_getCaptVerifCSV(getToken):
-  """retrieves daily capt verif csv"""
-
+def test_getSearchAndReplay(getToken):
+  """retrieves daily search and replay"""
 
   url = 'wfo.a31.verintcloudservices.com'
-  url_api = '/api/av/capture_verification/v1/call_segments/issues/search/csv'
+  url_api = '/daswebapi/Query/ExecuteDynamicQuery'
   s='null'  # requests session variable
   # create an Empty DataFrame object, holds capt verif results
   df = pd.DataFrame()
 
-  LOGGER.debug('test_getCaptVerifCSV:: started')
+  LOGGER.debug('test_getSearchAndReplay:: started')
   token = 'null'
-  conn = http.client.HTTPSConnection(url)
+
   token = os.environ["TOKEN"]
   assert(token),'token not retrieved'
 
-  LOGGER.debug('test_getCaptVerifCSV:: token retrieved')
+  LOGGER.debug('test_getSearchAndReplay:: token retrieved')
   payload = json.dumps({
     "org_id": 708000501,
-    "start_time": "2023-12-01T05:00:00-04:00",
-    "end_time": "2023-12-06T05:00:00-04:00",
+    "start_time": "2023-12-12T05:00:00-04:00",
+    "end_time": "2023-12-13T05:00:00-04:00",
     "page_size": 2000,
     "issue_filter": {}
   })
@@ -46,8 +45,6 @@ def test_getCaptVerifCSV(getToken):
     'Accept': 'application/json',
     'Impact360AuthToken': token
   }
-  #conn.request("POST", "/api/av/capture_verification/v1/call_segments/issues/search/csv", payload, headers)
-  #res = conn.getresponse()
 
   # create a sessions object
   session = requests.Session()
@@ -75,35 +72,16 @@ def test_getCaptVerifCSV(getToken):
     print("OOps: Something Else", err)
 
   assert s.status_code==200, 'session request response not 200 OK'
-  # access session cookies
-  #print(f'session cookies: {s.cookies}')
 
-  #print(f'***test_getCaptVerifCSV() resp received code: {res.code}')
-  print(f'***test_getCaptVerifCSV() session resp received code: {s.status_code}')
-  LOGGER.debug('test_getCaptVerifCSV:: response received')
+  print(f'test_getSearchAndReplay() session resp received code: {s.status_code}')
+  LOGGER.debug('test_getSearchAndReplay:: response received')
 
-  # delete previous zip files, csv
+  response_dict = json.loads(s.text)
+  s.raise_for_status()
+  SR_df = pd.json_normalize(response_dict)
+  SR_df.to_json('./output/SR/SR_daily.json')
 
-  folderPath = './output/CaptVerif/'
-
-  for fileName in listdir(folderPath):
-    # Check file extension
-    if fileName.endswith('.zip') or fileName.endswith('.csv'):
-      # Remove File
-      os.remove(folderPath + fileName)
+  assert not len(SR_df) == 0, 'No SR_df returned'
 
 
-  zipPath = '.\output\CaptVerif' + '\CaptVerifCSV_session' + '.zip'
-  with open(zipPath, 'wb') as zipFile:
-      zipFile.write(s.content)
-
-  # need to unzip Capt Verif csv and import to DF
-  # extract the file
-  shutil.unpack_archive(zipPath, '.\output\CaptVerif')
-  # determine the zip file name
-  path = r'.\output\CaptVerif\*.csv'
-  csv_file = glob.glob(path)
-
-  # read the csv into a df
-  df_CaptVerifDaily = pd.read_csv(csv_file[0])
 

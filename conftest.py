@@ -3,6 +3,7 @@ import json
 import yaml
 import hashlib
 import platform
+import src.__init__     # contains sw version
 import os
 import os
 import pytest
@@ -15,7 +16,6 @@ logging.basicConfig(level=logging.DEBUG)
 LOGGER = logging.getLogger(__name__)
 
 load_dotenv()  # take environment variables from .env.
-
 
 
 
