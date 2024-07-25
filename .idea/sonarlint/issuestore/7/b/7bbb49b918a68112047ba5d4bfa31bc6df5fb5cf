@@ -1,0 +1,6 @@
+
+˜python:S117Q"VRename this local variable "SR_df" to match the regular expression ^[_a-z][a-z0-9_]*$.(¢ë·ÉùÿÿÿÿJ$d0ae401f-8f08-456a-83bc-0ae752d9604f
+–python:S117"TRename this parameter "getToken" to match the regular expression ^[_a-z][a-z0-9_]*$.(Ð˜ÌÔÿÿÿÿÿJ$1722e670-acf7-411b-b0d9-004243dad657
+ python:S1542"]Rename function "test_getSearchAndReplay" to match the regular expression ^[a-z_][a-z0-9_]*$.(Ð˜ÌÔÿÿÿÿÿJ$379228db-1e44-48a1-a51a-0b8e662b411f
+dpython:S1481"&Remove the unused local variable "df".(Û¾ÖüJ$67758c6a-7f17-4a38-99e8-d1e9a02e5942
+lpython:S1940T")Use the opposite operator ("!=") instead.(ñô¬ÀþÿÿÿÿJ$0d4bb456-01ae-48a1-84d5-11f736d9e5c1

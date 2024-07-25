@@ -1,0 +1,11 @@
+
+python:S117l"bRename this local variable "df_CaptVerifDaily" to match the regular expression ^[_a-z][a-z0-9_]*$.(­¢îJ$70e689bc-1077-4513-9988-261696dd8f90
+›python:S117Y"YRename this local variable "fileName" to match the regular expression ^[_a-z][a-z0-9_]*$.(×¶¡şÿÿÿÿJ$fc24f03c-4519-4b1b-9aa7-dd418dafe0de
+python:S117W"[Rename this local variable "folderPath" to match the regular expression ^[_a-z][a-z0-9_]*$.(ÙìéÊúÿÿÿÿJ$65ca19c5-fb52-448f-88bb-2abda509059e
+‘python:S117"TRename this parameter "getToken" to match the regular expression ^[_a-z][a-z0-9_]*$.(ò§‘îJ$a4debd8b-8d11-4cd5-80c3-619d5e9b59b9
+•python:S117`"XRename this local variable "zipPath" to match the regular expression ^[_a-z][a-z0-9_]*$.(…¦Û‡J$963aef7c-3ccb-49bb-a466-8b0fba279623
+˜python:S1542"ZRename function "test_getCaptVerifCSV" to match the regular expression ^[a-z_][a-z0-9_]*$.(ò§‘îJ$85078218-5025-4fb9-823c-6a7779167503
+dpython:S1481"&Remove the unused local variable "df".(Û¾ÖüJ$a0e41963-a408-4298-ae7f-b9e30bf2cbf6
+epython:S1481"(Remove the unused local variable "conn".(Ìàò#J$15afe59e-1972-456b-bc85-847a62866f89
+rpython:S1481l"5Remove the unused local variable "df_CaptVerifDaily".(­¢îJ$bf3b47ff-3d55-44bf-933a-f39afa1198e9
+apython:S1251"Remove this commented out code.(ãÌ‹ÂúÿÿÿÿJ$46770588-5669-4684-b82f-a6ad6476d30b
